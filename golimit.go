@@ -30,6 +30,7 @@ func NewLimiter(period time.Duration, limit int) *Limiter {
 	}
 
 	go lim.clenup()
+	go lim.unban()
 
 	return lim
 }
