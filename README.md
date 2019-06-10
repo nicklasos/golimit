@@ -9,7 +9,7 @@ limit := golimit.NewLimiter(3 * time.Minute, 35) // Maximum 35 events for 3 minu
 if limit.IsBanned("user string identified") {
     w.WriteHeader(http.StatusTooManyRequests)
     w.Write([]byte("429 - Too many requests"))
-    retur
+    return
 }
 
 if limit.Allow("user string identifier") == false {
