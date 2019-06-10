@@ -6,7 +6,7 @@ Rate limit for Go
 ```go
 limit := golimit.NewLimiter(3 * time.Minute, 35) // Maximum 35 events for 3 minutes
 
-if limit.IsBanned("user string identified") {
+if limit.IsBanned("user string identifier") {
     w.WriteHeader(http.StatusTooManyRequests)
     w.Write([]byte("429 - Too many requests"))
     return
