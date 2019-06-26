@@ -27,4 +27,8 @@ group := golimit.NewGroupLimiter(
 group.Allow("id")
 group.Ban("id", 60 * time.Second)
 group.IsBanned("id")
+
+// Banned users count
+lim.BannedCount()
+group.BannedCount()
 ```
