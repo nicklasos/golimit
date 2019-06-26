@@ -17,4 +17,14 @@ if limit.Allow("user string identifier") == false {
 
     limit.Ban("user string identifier", 60 * time.Second) // You can also ban user
 }
+
+// Group limits
+group := golimit.NewGroupLimiter(
+    golimit.NewLimiter(1*time.Second, 2),
+    golimit.NewLimiter(1*time.Minute, 30),
+)
+    
+group.Allow("id")
+group.Ban("id", 60 * time.Second)
+group.IsBanned("id")
 ```
