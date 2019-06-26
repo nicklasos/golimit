@@ -32,6 +32,10 @@ func TestAllowGroupBan(t *testing.T) {
 		NewLimiter(1*time.Minute, 30),
 	)
 
+	if lim.BannedCount() != 0 {
+		t.Error("Banned count should be 0")
+	}
+
 	lim.Ban("id", 1*time.Minute)
 
 	if !lim.limiters[0].IsBanned("id") {
@@ -44,5 +48,9 @@ func TestAllowGroupBan(t *testing.T) {
 
 	if !lim.IsBanned("id") {
 		t.Error("Group limiter ban is not working")
+	}
+
+	if lim.BannedCount() != 2 {
+		t.Error("Banned count should be 2")
 	}
 }

@@ -35,3 +35,12 @@ func (g *GroupLimiter) IsBanned(id string) bool {
 
 	return false
 }
+
+func (g *GroupLimiter) BannedCount() int {
+	cnt := 0
+	for _, l := range g.limiters {
+		cnt += l.BannedCount()
+	}
+
+	return cnt
+}

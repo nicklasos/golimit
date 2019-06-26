@@ -125,3 +125,7 @@ func (l *Limiter) IsBanned(id string) bool {
 
 	return exists
 }
+
+func (l *Limiter) BannedCount() int {
+	return len(l.Bans)
+}

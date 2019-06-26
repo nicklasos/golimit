@@ -12,10 +12,18 @@ func TestBan(t *testing.T) {
 		t.Error("User should not be banned")
 	}
 
+	if lim.BannedCount() != 0 {
+		t.Error("Banned count should be 0")
+	}
+
 	lim.Ban("user", time.Second*1)
 
 	if !lim.IsBanned("user") {
 		t.Error("User should be banned")
+	}
+
+	if lim.BannedCount() != 1 {
+		t.Error("Banned count should be 1")
 	}
 }
 
